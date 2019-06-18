@@ -4,7 +4,8 @@
   "description": "list math calculations and shares log with other site visitors",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start:dev": "nodemon index.js",
+    "start": "node index.js"
   },
   "keywords": [
     "caclulator"
