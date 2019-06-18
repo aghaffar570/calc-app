@@ -29,14 +29,22 @@ calckeys.forEach( key => {
     if(btnVal === 'C') { // clear calcScreen
       calcScreen.innerHTML = '';
     }
-    else if(btnVal === '=' && expression.length) { // send/emit expression to server
-      socket.emit('expression', expression );
+    else if(btnVal === '=') { // send/emit expression to server
+      console.log('pressed equal');
+      const lastChar = expression.slice(-1);
+      // calcScreen can't be empty, last char can't be an operator
+      if(expression.length && !operations.includes(lastChar)) {
+        if(hasOperator(expression)) { // needs one operator
+          socket.emit('expression', expression );
+        }
+      }
     }
     else if(btnVal === '-' && !expression.length) { // negative start value
       calcScreen.innerHTML += btnVal;
     }
     else if(operations.includes(btnVal)) { // btnVal is an operation or decimal
       const lastChar = expression.slice(-1);
+      // calcScreen can't be empty or have an operator as the last char
       if(expression.length && !operations.includes(lastChar)) {
         calcScreen.innerHTML += btnVal;
       }
@@ -46,6 +54,18 @@ calckeys.forEach( key => {
     }
   })
 })
+
+
+
+function hasOperator(expression) { // check if a num exists after operation
+  for (let i = 0; i < expression.length; i++) {
+    const char = expression[i];
+    if(operations.includes(char)) {
+      return true;
+    }
+  }
+  return false;
+}
 
 
 socket.on('result', result => { // listen and change calcScreen for user
