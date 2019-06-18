@@ -2,6 +2,7 @@ const calckeys = document.querySelectorAll('.calculator span');
 const dashboard = document.querySelector('.dashboard-view');
 const calcScreen = document.querySelector('.screen');
 const socket = io('http://localhost:3000');
+const operations = '+-x÷.';
 let equationList = [];
 
 
@@ -30,6 +31,15 @@ calckeys.forEach( key => {
     }
     else if(btnVal === '=' && expression.length) { // send/emit expression to server
       socket.emit('expression', expression );
+    }
+    else if(btnVal === '-' && !expression.length) { // negative start value
+      calcScreen.innerHTML += btnVal;
+    }
+    else if(operations.includes(btnVal)) { // btnVal is an operation or decimal
+      const lastChar = expression.slice(-1);
+      if(expression.length && !operations.includes(lastChar)) {
+        calcScreen.innerHTML += btnVal;
+      }
     }
     else {
       calcScreen.innerHTML += btnVal;
