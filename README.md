@@ -17,6 +17,7 @@ and the calculations made will be broadcasted to every client on that IP
 
 ## Tech
 - node
+- mathjs
 - express
 - socket.io
-- mathjs
+- sessionStorage
