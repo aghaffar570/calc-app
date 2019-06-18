@@ -23,8 +23,6 @@ calckeys.forEach( key => {
     const expression = calcScreen.innerHTML;
     const btnVal = e.target.innerHTML;
 
-    // take care of edge cases:
-
     // math operations
     if(btnVal === 'C') { // clear calcScreen
       calcScreen.innerHTML = '';
@@ -60,7 +58,7 @@ calckeys.forEach( key => {
 function hasOperator(expression) { // check if a num exists after operation
   for (let i = 0; i < expression.length; i++) {
     const char = expression[i];
-    if(operations.includes(char)) {
+    if(operations.includes(char) && char !== '.') {
       return true;
     }
   }
