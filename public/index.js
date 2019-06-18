@@ -1,7 +1,7 @@
 const calckeys = document.querySelectorAll('.calculator span');
 const dashboard = document.querySelector('.dashboard-view');
 const calcScreen = document.querySelector('.screen');
-const socket = io('http://localhost:3000');
+const socket = io('https://calculator-socket-app.herokuapp.com/');
 const operations = '+-x÷.';
 let equationList = [];
 
