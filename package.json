@@ -4,7 +4,7 @@
   "description": "list math calculations and shares log with other site visitors",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "nodemon index.js"
   },
   "keywords": [
     "caclulator"
@@ -16,5 +16,8 @@
     "express": "^4.17.1",
     "mathjs": "^6.0.2",
     "socket.io": "^2.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
   }
 }
