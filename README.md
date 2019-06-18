@@ -1,4 +1,4 @@
-# Calculator App | https://github.com/aghaffar570/calc-app
+# Calculator App | https://calculator-socket-app.herokuapp.com/
 
 A calculator app that logs your calculation as its happens and shares it with everyone connected on the site
 
